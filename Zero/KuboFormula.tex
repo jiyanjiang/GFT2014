@@ -1,0 +1,389 @@
+\section{线性响应}
+
+
+\subsection{久保公式}
+
+对处在平衡态的系统加弱的外场：
+
+\begin{equation}
+H = H_0 + H'
+\end{equation}
+
+外场可表示为力学量$B$与时间函数$f(t)$的乘积形式，
+
+\begin{equation}
+H' = - Bf(t)
+\end{equation}
+
+我们可以假设是无限缓慢地加上$H'$, 即$f(t) = e^{\eta t}$, 当$t \to - \infty$时, $H = H_0$, 当$t = 0$时，弱的外场百分百加上去，即：$H = H_0 - B$。
+
+平衡态时，统计算符$\rho$取，比如正则系综\footnote{正则系综，系统与环境可以交换能量但不能交换粒子；巨正则系综，系统与环境即可以交换能量也可以交换粒子。对巨正则系综，统计算符：$\rho_G = Z_G^{-1} e^{-\beta (H -\mu N)}$}的形式，
+
+\begin{equation}
+\rho(t \to - \infty) = \rho_0 = Z^{-1} e^{-\beta H}
+\end{equation}
+
+统计算符$\rho$随时间的演化符合量子刘维方程：
+
+\begin{equation}
+i \hbar \frac{\partial}{\partial t }\rho = [H, \rho]
+\end{equation}
+
+如果$H$中只包含$H_0$，则$\rho$不随时间变换，这是平衡态的性质。但现在$H$中还有$H'$，$\rho$将随时间变化，但考虑到$H'$并不大，所以这个变化是个小变化，假设这种小相互作用导致的小变化可以用微扰论的思路来处理。
+
+但首先我们应设法将$H'$导致的$\rho$的变化表示出来。
+
+使用相互作用绘景：
+
+\begin{eqnarray}
+\rho_I (t)  & = & e^{i H_0 t / \hbar} \rho e^{- i H_0 t / \hbar} \\
+B_I (t)  & = &  e^{i H_0 t / \hbar} B e^{- i H_0 t / \hbar} \\  
+\end{eqnarray}
+
+现在来计算$\rho_I (t)$随时间的演化：
+
+\begin{equation}
+i \hbar \frac{\partial}{\partial t} \rho_I = - [B_I , \rho_I ] f
+\end{equation}
+
+现在$\rho_I$的变化就只与外场$- Bf$有关了。考虑：
+
+\begin{equation}
+\rho(t \to - \infty) = \rho_0
+\end{equation}
+
+可形式地解出$\rho_I$,
+
+\begin{equation}
+\rho_I(t) = \rho_0  + \frac{i}{\hbar} \int_{-\infty}^{t} [B_I(t'), \rho_I(t')] f(t') dt'
+\end{equation}
+
+外场很小，等式右侧近似地用$\rho_0$代替$\rho_I(t')$，即迭代一次：
+
+\begin{equation}
+\rho_I(t) = \rho_0  + \frac{i}{\hbar} \int_{-\infty}^{t} [B_I(t'), \rho_0] f(t') dt'
+\end{equation}
+
+对物理量$A$求统计平均，
+
+\begin{equation}
+\left\langle A \right\rangle = Tr \rho A
+\end{equation}
+
+系统对外场的响应可定义为$\left\langle A\right\rangle$的变化$\Delta A$,
+
+\begin{equation}
+\Delta A = \left\langle A \right\rangle - \left\langle A \right\rangle_0 =  Tr \rho A - Tr \rho_0 A
+\end{equation}
+
+利用矩阵求迹运算的性质：$Tr ABC = Tr BCA = ...$，可把$\Delta A$表示为：
+
+\begin{equation}
+\Delta A = \frac{i}{\hbar} \int_{-\infty}^{t} dt' \left\langle [A(t) , B(t')] \right\rangle f(t')   
+\end{equation}
+
+这里$t$是积分限，$t > t'$，引入$\theta (t - t')$，可将$\Delta A$表示为：
+
+\begin{equation}\label{Kubo Formula}
+\Delta A = \frac{i}{\hbar} \int_{-\infty}^{\infty} dt' \theta(t - t') \left\langle [A(t) , B(t')] \right\rangle f(t')
+\end{equation}
+
+上式[\ref{Kubo Formula}]即所谓久保公式（Kubo Formula）。
+
+$\theta(t - t')$保证只有当$t > t'$时积分才有贡献，换言之，只有$t$之前的外场$-Bf$才会对响应$\Delta A$有贡献。这就是因果律，物理中的因果律假设只有先前发生的事情才可能对稍后发生的事情产生影响。
+
+定义动态感应系数（Dynamical Susceptibility）$\chi_{AB}$：
+
+\begin{equation}
+\chi_{AB} = \frac{i}{\hbar}  \theta(t - t') \left\langle [A(t) , B(t')] \right\rangle
+\end{equation}
+
+现在$\Delta A$可表示为：
+
+\begin{equation}
+\Delta A(t) = \int_{-\infty}^{\infty} dt' \chi_{AB}(t - t') f(t')
+\end{equation}
+
+上式右侧即卷积的定义：
+
+\begin{equation}
+f(t) = \int_{-\infty}^{\infty} dt' f_1(t') f_2(t-t') = f_1 \star f_2
+\end{equation}
+
+根据卷积定理\footnote{对$f(t)$的傅里叶变换是：
+
+\begin{equation*}
+F(\omega) = F_1(\omega) \cdot F_2(\omega)
+\end{equation*}}，得到对$\Delta A (t)$的傅里叶变换：
+
+\begin{equation}
+\Delta A (\omega) = \chi_{AB}(\omega) f(\omega)
+\end{equation}
+
+
+\subsection{存在阻尼和外力的弹簧}
+
+为了研究响应，先在来看一个简单的经典模型，即存在阻尼和外驱动力的弹簧。
+
+假设$m=1$, 动力学方程是：
+
+\begin{equation}
+\frac{d^2 x}{d t^2}= f(t) - \omega_0^2 x - \gamma \frac{dx}{dt} 
+\end{equation}
+
+上式右侧第一项$f(t)$是外加的驱动力，第二项$-\omega_0^2 x$是弹性回复力，第三项$-\gamma \frac{dx}{dt}$是阻尼。
+
+定义推迟响应函数（Retarded Response Function），$\chi_R(t-t')$
+
+\begin{equation}
+x(t) = \int_{- \infty}^{\infty} dt' \chi_R(t-t') f(t')
+\end{equation}
+
+考虑因果性（causality），只有发生在前的驱动$f(t')$会影响发生在后的响应$x(t)$。这意味着：
+
+当$t - t' < 0$时，$\chi_R(t-t') = 0$。我们把$x(t)$代入动力学方程$\frac{d^2 x}{dt^2} = ...$中去。
+
+假设$f(t) = \theta(t-t')$, 即$t- t' >0$时，$f(t) = 1$，驱动力有效，$t-t' <0$, $f(t) = 0$, 驱动力无效，这是因果性的要求。
+
+我们得到：
+
+\begin{equation}
+\frac{d^2 \chi_R(t-t')}{d t^2} + \gamma \frac{d \chi_R(t-t')}{dt} + \omega_0^2 \chi_R(t-t') = \delta(t-t')
+\end{equation}
+
+可见$\chi_R(t-t')$就是动力学方程的格林函数。
+
+把$\chi_R(t-t')$换到频率空间，定义：
+
+\begin{equation}
+\chi(\omega) = \int_{-\infty}^{\infty} dt  e^{i \omega t} \chi (t) = \int_0^{\infty} dt e^{i \omega t} \chi (t)
+\end{equation}
+
+上式中第二个等号是考虑到因果性，$\chi(t < 0) = 0$，的结果。
+
+把$\chi(\omega)$换为以$t$为宗量：
+
+\begin{equation}
+\chi(t) = \int_{-\infty}^{\infty} \frac{d \omega}{2 \pi} e^{- i \omega t} \chi(\omega)
+\end{equation}
+
+把$\chi(t)$代入方程$\frac{d^2}{dt^2} \chi_R (t-t') + ...$中，得到：
+
+\begin{equation}
+(- \omega^2 - i \gamma \omega + \omega_0^2 ) \chi_R (\omega)= 1
+\end{equation}
+
+解出$\chi_R(\omega)$：
+
+\begin{equation}
+\chi_R (\omega) = \frac{1}{\omega_0^2 - \omega^2 - i \gamma \omega }
+\end{equation}
+
+$\chi_R(\omega)$是复函数，写成实部$\chi'(\omega)$加虚部$\chi''(\omega)$的形式：
+
+\begin{equation}
+\chi_R (\omega) = \chi'(\omega) + i \chi''(\omega)
+\end{equation}
+
+这里：
+
+\begin{eqnarray}
+\chi'(\omega) & = & \frac{\omega_0^2 - \omega^2 }{ (\omega_0^2 - \omega^2 )^2 + (\gamma \omega)^2 }   \\
+\chi''(\omega) & = &  \frac{ \gamma \omega  }{ (\omega_0^2 - \omega^2 )^2 + (\gamma \omega)^2 }  \\
+\end{eqnarray}
+
+对实部$\chi'(\omega)$,
+
+\begin{equation*}
+\chi'(\omega) = Re  \int_{- \infty}^{\infty} dt  { e^{i \omega t} }  \chi(t) = \int_{- \infty}^{\infty} dt \cos {\omega t}  \chi(t)
+\end{equation*}
+
+这里：$\cos {\omega t } = \frac{e^{i \omega t}  + e^{- i \omega t} }{2}$, 这意味着：
+
+\begin{equation}
+\chi'(\omega) = \int_{- \infty}^{\infty} dt e^{i \omega t} \frac{1}{2} (\chi(t) + \chi(-t))
+\end{equation}
+
+对实部$\chi'(\omega)$而言，$ t \to -t $, $\chi'(\omega)$不变，即实部$\chi'(\omega)$中不包含时间箭头的信息。
+
+类似地，我们可以讨论虚部$\chi''(\omega)$,
+
+\begin{equation}
+\chi''(\omega) = \int_{-\infty}^{\infty} dt e^{i \omega t } \frac{1}{2i} (\chi(t) - \chi(-t))
+\end{equation}
+
+当$t \to -t$时，虚部$\chi''(\omega)$变号，说明虚部$\chi''(\omega)$中包含时间箭头的信息。当系统存在耗散（dissipation）时，时间箭头存在，因此$\chi''(\omega)$和耗散有关，称为耗散部分（dissipative part）或吸收部分（absorptive part）。实部$\chi'(\omega)$与耗散无关，称为反射部分（reactive part）。
+
+考虑外力$f(t)$做功$dW = f(t) dx$, 功率是：
+
+\begin{equation}
+\frac{d W}{dt} = f(t) \frac{d x}{dt}
+\end{equation}
+
+把$x(t)$代入：
+
+\begin{equation*}
+\frac{d W}{dt} = f(t) \frac{d}{dt} \int_{-\infty}^{\infty} dt' \chi_R (t-t') f(t')
+\end{equation*}
+
+考虑$x(t)$的傅里叶变换：
+
+\begin{equation*}
+x(t) = \int_{-\infty}^{\infty} \frac{d \omega}{2 \pi} e^{-i \omega t } x (\omega) = \int_{-\infty}^{\infty} \frac{d \omega}{2 \pi} e^{-i \omega t } \chi_R (\omega) f(\omega)
+\end{equation*}
+
+因此，
+
+\begin{equation}
+x(t) = \int \frac{d \omega}{ 2\pi}\frac{d \omega'}{2 \pi} e^{-i (\omega + \omega') t } (-i\omega) \chi_R (\omega) f(\omega) f(\omega')
+\end{equation}
+
+假设外力：
+
+\begin{equation}
+f(t) = f_0 \cos \Omega_0 t = \frac{f_0}{2} ( e^{i \Omega_0 t}  +  e^{ - i \Omega_0 t} )
+\end{equation}
+
+考虑：
+
+\begin{equation*}
+\int \frac{d \omega}{2 \pi} \frac{d \omega' }{2 \pi} ...  \to \sum\limits_{\omega, \omega'} ...
+\end{equation*}
+
+考虑$\omega = \Omega_0$, $\omega' = - \Omega_0$; 和$\omega = - \Omega_0$, $\omega' =  \Omega_0$ 的情况。不考虑$\omega + \omega' = \pm 2\Omega_0$的情况。
+
+即考虑零频率时的外力做功：
+
+\begin{equation}
+\frac{dW}{dt} (\omega + \omega' = 0) = - i \frac{1}{4}f_0^2 (\Omega_0 \chi_R(\Omega_0) - \Omega_0 \chi_R( - \Omega_0))
+\end{equation}
+
+考虑：
+
+\begin{equation*}
+\chi_R(\omega) = \chi' (\omega) + i \chi'' (\omega)
+\end{equation*}
+
+和：
+
+\begin{eqnarray*}
+\chi'(\Omega_0)  & = & \chi'(-\Omega_0)  \\
+\chi'' (-\Omega_0)  & = & - \chi'' (\Omega_0) \\
+\end{eqnarray*}
+
+得到：
+
+\begin{equation}
+\frac{dW}{dt} (\omega + \omega' = 0) = \frac{1}{2}f_0^2 \Omega_0 \chi''(\Omega_0)
+\end{equation}
+
+代入$\chi''(\Omega_0)$得，
+
+\begin{equation}
+\frac{dW}{dt} = \frac{1}{2} f_0^2  \frac{\gamma \Omega_0^2 }{ ( \omega_0^2 - \Omega_0^2  )^2 +(\gamma \Omega_0)^2 }
+\end{equation}
+
+当外力的频率为$\Omega_0 = \pm \omega_0$时，吸收或耗散最大，这就是共振（resonance）。
+
+考虑外力$\Omega_0 \approx \omega_0$, $\omega_0 +\Omega_0 \approx 2\Omega_0 $, 可得到洛伦兹线形（Lorentzian Lineshape）:
+
+\begin{equation}
+\frac{dW}{dt} = \frac{1}{2}f_0^2 \frac{\gamma}{ 4 (\omega_0 - \Omega_0)^2 + \gamma^2}
+\end{equation}
+
+\subsection*{练习}
+
+\begin{enumerate}
+\item 
+
+考虑相互作用绘景下力学量$A_I(t)$的定义：
+
+\begin{equation*}
+A_I (t)  = e^{i H_0 t} A e^{- i H_0 t}
+\end{equation*}
+
+求证：在平衡态下，
+
+\begin{equation}
+\left\langle A_I (t) \right\rangle = \left\langle A \right\rangle
+\end{equation}
+
+
+\item
+
+假设：$H = H_0 - f(t) A$，$\hbar = 1$，证明一阶微扰下：
+
+\begin{eqnarray*}
+\left\langle A(t) \right\rangle  & = & \left\langle A \right\rangle + \int_{-\infty}^{\infty} \chi(t - t') f(t') dt'  \\
+\chi(t-t')  & = & i \left\langle [A(t), A(t')] \right\rangle \theta(t-t') \\
+\end{eqnarray*}
+
+证：
+
+相互作用绘景下力学量$A_I (t)$与海森堡绘景下力学量$A_H (t)$的关系可通过相互作用绘景下演化算符$U$联系起来：
+
+\begin{equation*}
+A_H(t) = U^{\dagger}(t)  A_I(t) U(t)
+\end{equation*}
+
+为方便把$A_I (t)$写作$A(t)$，并把演化算符$U$展开到相互作用的一阶：
+
+\begin{eqnarray*}
+U(t) &=& 1+i \int_{-\infty}^t dt' A(t') f(t') \\
+U^{\dagger}(t) &=& 1- i \int_{-\infty}^t dt' A(t') f(t')  \\
+\end{eqnarray*}
+
+把一阶展开代入到$A_H (t)$中,
+
+\begin{equation}
+A_H (t) = A(t) + i \int_{-\infty}^t dt' [A(t), A(t')] f(t')
+\end{equation}
+
+考虑相互作用绘景下力学量$A_I(t)$的定义：
+
+\begin{equation*}
+A_I (t)  = e^{i H_0 t} A e^{- i H_0 t}
+\end{equation*}
+
+在平衡态下：
+
+\begin{equation}
+\left\langle A_I (t) \right\rangle = \left\langle A \right\rangle
+\end{equation}
+
+外力下的响应为：
+
+\begin{equation}
+\left\langle A_H(t)\right\rangle - \left\langle A \right\rangle = \int_{-\infty}^{\infty} dt' \chi(t-t') f(t')
+\end{equation}
+
+其中：
+
+\begin{equation*}
+\chi(t-t')  = i \left\langle [A(t), A(t')] \right\rangle \theta(t-t')
+\end{equation*}
+
+QED
+
+
+\end{enumerate}
+
+
+\subsection*{阅读}
+
+\begin{enumerate}
+\item 
+
+蔡建华等，《量子统计的格林函数理论》，\S 1.6
+
+\item
+
+Chetan Nayak, Quantum Condensed Matter Physics Lecture Notes, \S 6.1
+
+
+\item
+
+Piers Coleman, Introduction to Many Body Physics, \S 10.1, 10.2
+
+\end{enumerate}
+
