@@ -1,0 +1,255 @@
+\section{声子}
+
+
+现在考虑晶体中原子点阵的哈密顿量,
+
+\begin{equation}\label{lattice hamiltonian}
+H = \sum_{i} \frac{P_{i}^2}{2M} +\frac{1}{2} \sum_{i \neq j} V(
+\textbf{X}_{i} -\textbf{X}_{j} )
+\end{equation}
+
+上式中的$1/2$是来自对相互作用势能的重复计算, 黑体字表示是位移矢量.
+一般情况下, 原子仅偏离平衡位置, 作微小振动, 位移:
+
+\begin{equation*}
+\textbf{X}_i = \textbf{R}_i + \textbf{u}_i
+\end{equation*}
+
+是小量. 相互作用势能可写成小量展开的形式, 我们一般取简谐近似,
+即只展开到小量的二阶贡献(二次方项).
+
+\begin{equation*}
+\sum_{i \neq j} V(\textbf{X}_{i}-\textbf{X}_{j}) = V(0)+ \frac{1}{2}
+\sum_{i \neq j} \sum_{\alpha, \beta} (u_i^{\alpha} - u_j^{\alpha})
+(u_i^{\beta} - u_j^{\beta}) \frac{\partial ^2 V}{\partial u^{\alpha}
+\partial u^{\beta}}
+\end{equation*}
+
+
+$(u_i^{\alpha} - u_j^{\alpha}) (u_i^{\beta} -
+u_j^{\beta})$中的项可以分为两部分, 一部分只与指标$i$或$j$有关,
+另一部分则包括$u_i u_j$这样的项,
+前者可看作是在$i$格点或$j$格点附近的振子,
+而后者则可看作是振子间的相互作用. 通过引入适当的变量变换,
+我们可把相互作用去掉,
+即把相互作用重新表示为一系列具有不同振荡模式的简谐振子之和的形式。
+
+\subsection{一维晶格}
+
+下面讨论一个简化了的一维例子,
+
+\begin{equation*}
+H = \sum_{i=1}^N\left[\frac{p_i^2}{2M} + \frac{K}{2} \left( x_i -
+x_{i+1} \right)^2  \right]
+\end{equation*}
+
+这里$M$是原子的质量, $K$是简谐近似下相邻原子间“弹性系数”, $x$是原子偏离平衡位置的位移, 相当于前面的$u$.
+
+首先考虑经典解, 需要求解运动方程:
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+\dot x_l &=& \frac{\partial H}{\partial p_l} \\
+\dot p_l &=& - \frac{\partial H}{\partial x_l}
+\end{eqnarray*}
+
+这里的指标$l$要遍历整个一维格点(并且在正负轴方向是无限延伸的, 否则没法化简), 是个颇为复杂的联立方程组,
+
+\begin{equation}\label{classic eq of motion: 1d}
+M \ddot x_l = - K (2 x_l - x_{l-1} - x_{l+1})
+\end{equation}
+
+
+假设对格点$l$, 存在解:
+
+\begin{equation}\label{1d lattice wave}
+x_l = A e^{i( q l a  - \omega (q) t )}
+\end{equation}
+
+$a$是相邻原子间隔, 这里的变量是格点$l$,
+即在一维点阵上传播的“格波”。动力学方程(\ref{classic eq of motion: 1d})化简可得,
+
+\begin{equation*}
+M \ddot x_l = - 2 K (1- \cos qa) x_l
+\end{equation*}
+
+上式就是个“简谐运动”的方程, $\ddot x + \omega^2 x =0$, 这里,
+
+\begin{equation*}
+\omega_q^2 = \frac{2K(1- \cos qa)}{M} = \frac{4K}{M} \sin^2 \left( \frac{qa}{2} \right)
+\end{equation*}
+
+即:
+
+\begin{equation}\label{solution of 1d classic harmonics}
+\omega_q = 2 \sqrt{\frac{K}{M}} \left| \sin \left( \frac{qa}{2}
+\right) \right|
+\end{equation}
+
+由$\omega_q$的表达式, 我们还可以看出, $\omega_q$是倒空间的周期函数,
+
+\begin{equation*}
+\omega_q = \omega(q) = \omega(q + \frac{2\pi}{a} h)=\omega_{q + K_h}
+\end{equation*}
+
+这里$K_h = \frac{2\pi}{a} h$表示倒格矢, h是整数. 波矢q ($q \sim
+\frac{1}{\lambda}$)的取值没有下限, 当$q \to 0$, 即长波极限, 有:
+$\omega_q = \sqrt{\frac{K}{M}} a q = c q$, $c=\sqrt{\frac{K}{M} }
+a$表示声速\footnote{胡安, 《固体物理学》, pp82}.
+
+对一维格波(\ref{1d lattice wave}), 由于：
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  e^{iqla} &=& e^{i(q + K_h)la} \\
+  \omega_q &=& \omega_{q + K_h}
+\end{eqnarray*}
+
+所以我们只需考虑$q \in \left[0, \frac{2\pi}{a} \right]$的振荡即可, 为对称起见, 我们也经常取作第一布里渊区1BZ, $q \in
+\left[-\frac{\pi}{a} , \frac{\pi}{a} \right]$。
+
+\subsection{“玻恩---卡门”边界条件}
+
+对真实的“固体”而言, 格点数有限(假设为$N$), 没法在正负轴方向上无限延伸, 不存在严格意义下的平移对称性,
+以上求解不成立, 为了得到解析解, 我们需要假设“玻恩---卡门”边界条件, 或周期性边界条件. 考虑到对真实的固体而言, 边界处原子数较少,
+这种解法能很好地描述块状固体材料中的晶格振荡.
+
+周期性边界条件, 意味着当指标由$n \to n+N$时, 所有原子振动相同,
+
+\begin{equation*}
+A e^{i q n a} = A e^{i q (n +N) a}
+\end{equation*}
+
+即要求:
+
+\begin{equation*}
+e^{i q N a} =1, qNa = 2h \pi, q = \frac{2 h \pi}{Na}
+\end{equation*}
+
+这里$h$是整数. 当 $h \in [-N/2, N/2]$时, $q  \in [-\frac{\pi}{a},
+\frac{\pi}{a}]$, 对应第一布里渊区(1BZ)。
+
+在“玻恩---卡门”边界条件下, 我们可证明两个重要的“正交归一”关系式\footnote{要利用求“$\frac{0}{0}$”型极限的手段,
+参考: 胡安, 《固体物理学》, pp84.}.
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  \frac{1}{N} \sum_{n=1}^N e^{i (q-q')na} &=& \delta_{q,q'} \\
+  \frac{1}{N} \sum_{q \in 1BZ} e^{i q (n-n')a} &=& \delta_{n,n'}
+\end{eqnarray*}
+
+在周期性边界条件下, 假设解的形式是：
+
+\begin{equation}\label{x_l lattice wave}
+x_l = \frac{1}{\sqrt N} \sum_{q \in 1BZ} e^{iq l a} x_q
+\end{equation}
+
+即实空间中的振动是所有独立振动模式$\frac{1}{\sqrt N}e^{iq l a}$的叠加(对q求和), 每个振动模式的振幅是$x_q$,
+随时间演化的部分在形式上被包括在x中。
+
+$x_q$也可用$x_l$表示, 相当于是逆傅立叶变换:
+
+\begin{equation}\label{x_q lattice wave}
+  x_q = \frac{1}{\sqrt N} \sum_l e^{-i q l a} x_l \\
+\end{equation}
+
+利用公式(\ref{x_l lattice wave}, \ref{x_q lattice wave}),
+动能项$T$可表示为,
+
+\begin{equation*}
+\frac{M}{2}\sum_l \dot x_l^2 = \frac{M}{2} \sum_q \dot x_q \dot
+x_{-q}
+\end{equation*}
+
+势能项$V$可表示为,
+
+\begin{equation*}
+\frac{K}{2} \sum_l (x_l -x_{l+1})^2 =  \sum_q K(1- \cos q a) x_q
+x_{-q}
+\end{equation*}
+
+定义: $\omega_q^2 = \frac{2K(1-\cos qa)}{M} $, $V = \frac{M}{2}
+\sum_q \omega_q^2 x_q x_{-q} $, 拉格朗日$L=T-V$可表示为:
+
+\begin{equation*}
+L = \sum_q \left[ \frac{M}{2} \dot x_q \dot x_{-q} - \frac{M
+\omega_q^2}{2} x_q x_{-q} \right]
+\end{equation*}
+
+\subsection{正则量子化}
+
+对正则位置$x_q$, 可求正则动量,
+
+\begin{equation*}
+p_q = \frac{\partial L}{\partial \dot x_q} = M \dot x_{-q}
+\end{equation*}
+
+根据量子力学中的正则量子化, 我们要使:
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+\left[ x_l  ,  p_l' \right] &=& i \hbar \delta_{l,l'} \\
+\left[ x_q  ,  p_q' \right] &=& i \hbar \delta_{q,q'}
+\end{eqnarray*}
+
+这意味着:
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  p_l &=& \frac{1}{\sqrt N} \sum_q e^{-i q l a } p_q \\
+  p_q &=& \frac{1}{\sqrt N} \sum_l e^{i q l a} p_l
+\end{eqnarray*}
+
+
+哈密顿量$H$:
+
+\begin{equation}\label{N site 1d harmonic lattice}
+H = \sum_q \left[ \frac{p_{-q} p_{q}}{2M} + \frac{M\omega_q^2}{2}
+x_q x_{-q} \right]
+\end{equation}
+
+计算运动方程:
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+i\hbar \dot x_q &=& [x_q, H] = \frac{p_{-q}}{M} \\
+i \hbar \dot p_q &=& [p_q, H]= - M \omega_q^2 x_{-q}
+\end{eqnarray*}
+
+这提示我们, $x_q$要和$p_{-q}$组合起来, 而$x_{-q}$要和$p_q$组合起来.
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+a_q &=& \sqrt{\frac{m \omega_q}{2\hbar}} \left(x_q +\frac{i}{m \omega_q} p_{-q} \right) \\
+a_q^{\dagger} &=& \sqrt{\frac{m \omega_q}{2\hbar}} \left(x_{-q} - \frac{i}{m \omega_q} p_q \right)
+\end{eqnarray*}
+
+并且满足:
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  \left[a_q , a_{q'}^\dagger \right] &=& \delta_{q,q'} \\
+  \left[a_q, a_{q'}\right] &=& 0 \\
+  \left[a_q^\dagger , a_{q'}^\dagger \right] &=& 0
+\end{eqnarray*}
+
+在此变换下, 哈密顿(\ref{N site 1d harmonic lattice})可对角化,
+
+\begin{equation*}
+H = \sum_q \hbar \omega_q \left( a_q^\dagger a_q + \frac{1}{2} \right)
+\end{equation*}
+
+
+
+
+\subsection*{阅读}
+
+\begin{enumerate}
+
+  \item Mahan, Many-Particle Physics, $\S$ 1.1-1.3
+
+  \item 蔡建华, 龚昌德等, 《量子统计的格林函数理论》, $\S$ 1.3, $\S$  1.4
+
+  \item Alexander Altland, Ben Simons, ``Condensed Matter Field Theory'', $\S$ 2.4 Problems.
+
+\end{enumerate}

@@ -1,0 +1,59 @@
+\section{准粒子}
+
+\subsection{基本概念}
+
+理想费米气体的基态是费米球（Fermi sphere），理想玻色气的基态是全部粒子都处在最低能态。理想气体（无相互作用）的激发态是有一个或几个粒子跃迁到较高能量的态，这种激发态仍然是系统的定态，是哈密顿算符严格的本征态，在没有外扰情况下，理想气体激发态的寿命是无穷长。
+
+对有相互作用的非理想系统，单粒子图像不再成立，最多只能在近似的意义下谈论单粒子态，如系统中存在准电子，其有效质量$m^*$, 能谱$\varepsilon$, 寿命$\tau$等。
+这是因为相互作用使粒子与粒子牵连在一起，我们无法再把任何一个粒子的运动与其他粒子分离开，严格说来，此时只存在整个系统的定态，而不存在（或无法谈论）个别粒子的由一定能量，动量或其他量子数来标志的定态。
+
+要计算相互作用系准确的定态，数学上是很困难的，即使能算，这样的定态波函数因为过于复杂，而很可能难以从它那里获得简明的物理结果。对物理学家而言，不是一个“严格求解”的问题，而是需要通过发展概念和方法来处理复杂的相互作用系统，使得简单性的叙述成为可能，比如我们在近似的意义下仍然可以谈论单个粒子，这个近似意义下谈论的粒子就是“准粒子”。由于相互作用的存在，准粒子和理想气体中的粒子是迥然不同的，比如准粒子将具有有限的寿命$\tau$。
+
+现在来考虑一个“费米球”加“球外一个准粒子”（在这个意义下,
+准粒子也叫“元激发”）的状态，由于相互作用的存在，这样的激发态并不是真正的定态, 因此不可能永久稳定地存在。由于相互作用的存在, 球外的粒子能把球内的一个粒子激发出来,
+同时剩下一个空穴, 其结果就是球外的准粒子“裂变”成两个粒子加上一个空穴。当然, 还可能发生更加复杂的衰变过程,
+使球外粒子的最初的激发态能量最后扩散到系统的全体粒子。因此, “准粒子态”将具有有限的寿命。自然, 在准粒子的$\varepsilon$, $m^*$, 和$\tau$中就包含了相互作用系的信息. 在物理上有意义的准粒子态, 根据不确定原理$ \Delta \varepsilon \tau \sim \hbar$, 是寿命足够长（$\tau$大）, 相应准粒子态能量比较能够确定（$\Delta \varepsilon $小 ）的态。
+
+\subsection{传播子}
+
+现在重新回到“费米球（FS, 基态）加一个球外粒子”这个例子，我们用$\left| \Psi_0 \right\rangle$表示基态。假设$t=0$时，在$x'$外加上一个粒子，形成$N+1$个粒子系的一个激发态，
+
+\begin{equation}\label{FS + 1 quasiparticle}
+\hat \Psi^\dagger (x', 0) \left| \Psi_0 \right\rangle
+\end{equation}
+
+$x$处，$t$时存在与费米球相互作用着的准粒子，
+
+\begin{equation*}
+\hat \Psi^\dagger (x, t) \left| \Psi_0 \right\rangle
+\end{equation*}
+
+时间：$0 \to t$, 从$x' \to x$的几率幅是，
+
+\begin{equation}\label{1 quasiparticle propagation}
+\left\langle \Psi_0 \right| \hat \Psi(x, t) \hat \Psi^\dagger(x',
+0)\left| \Psi_0 \right\rangle, t>0.
+\end{equation}
+
+假设几率幅计算的结果取如下形式,
+
+\begin{equation*}
+\sim e^{-i (\varepsilon - i \gamma )t} = e^{-\gamma t} e^{-i
+\varepsilon t}
+\end{equation*}
+
+我们可作这样的讨论, 如果$\gamma = 0$, 那么量子态(\ref{FS + 1 quasiparticle})表示的就是一个定态，拥有无限长的寿命,
+能量本征值为$\varepsilon$. 如果$\gamma \neq 0$, 说明准粒子态(\ref{FS + 1 quasiparticle})不是真正的定态, 而是有衰减的。$\gamma$足够小, 寿命足够长, 说明准粒子态能长久地存在, 这可看作是一个近似的定态。
+
+传播子(\ref{1 quasiparticle propagation})就是绝对零度时,
+$t>0$情形下的单粒子格林函数, 我们可从中研究准粒子能谱(也叫色散关系)$\varepsilon (p)$, 和寿命$\gamma (p)$.
+
+\subsection*{阅读}
+
+\begin{enumerate}
+
+  \item 蔡建华 等, 《量子统计的格林函数理论》, $\S$ 1.5
+
+  \item R. D. Mattuck, A guide to Feynman Diagrams in the Many-Body problem, $\S$ 0.
+
+\end{enumerate}
