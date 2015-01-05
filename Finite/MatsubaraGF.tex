@@ -1,0 +1,206 @@
+\section{松原函数}
+
+\subsection{热力学格林函数}
+
+零温格林函数被定义为：
+
+\begin{equation}
+i G(1,2) = \left\langle 0 \right| T ( \psi(1) \psi^\dagger (2)) \left| 0 \right\rangle
+\end{equation}
+
+有限温度，系统将可出于激发态$\left| n \right\rangle$，定义激发态的单粒子格林函数为：
+
+\begin{equation}
+i G (1,2: n) =  \left\langle n \right| T ( \psi(1) \psi^\dagger (2)) \left| n \right\rangle
+\end{equation}
+
+系统出于激发态$\left| n \right\rangle$的几率是$e^{- \beta ( E_n - \mu N )}$，对$i G(1,2: n)$求统计平均，
+
+\begin{equation}
+i G(1,2: \beta, \mu) = Tr \left[ \rho_G T( \psi(1) \psi^\dagger(2) ) \right] = \sum\limits_{N, n} e^{\beta \Omega} e^{- \beta ( E_n - \mu N )} \left\langle n \right|  T (\psi(1) \psi^\dagger (2)) \left| n \right\rangle   
+\end{equation}
+
+这里$e^{\beta \Omega}$ 是归一化常数，
+
+\begin{equation}
+e^{-\beta \Omega} = Tr e^{- \beta (H - \mu N)}
+= \sum\limits_{N,n} e^{-\beta (E_n - \mu N)}
+\end{equation}
+
+\subsection{虚时变换}
+
+
+回忆海森堡绘景的变换关系：
+
+\begin{equation}
+O_H (t) = e^{i H t} O e^{- i H t}
+\end{equation}
+
+这里我们使用$K = H - \mu N$替代$H$
+
+\begin{eqnarray*}
+\psi (t) = e^{i K t}  \psi e^{-i K t}  \\
+\psi^\dagger (t) = e^{i K t } \psi^\dagger e^{- i Kt}
+\end{eqnarray*}
+
+对$t_1 > t_2$，
+
+\begin{eqnarray*}
+i G(1,2) & = & Tr \left[  e^{\beta \Omega} e^{ - \beta K }  e^{i K t_1} \psi(x_1) e^{-i K t_1} e^{ i K t_2} \psi^\dagger (x_2) e^{- i K t_2}   \right] \\
+{} & = & Tr \left[  e^{\beta \Omega} e^{ - \beta K }  e^{i K ( t_1 - t_2 )} \psi(x_1) e^{-i K (t_1 -t_2)} \psi^\dagger (x_2)   \right]
+\end{eqnarray*}
+
+对$t_1 < t_2$，
+
+\begin{eqnarray*}
+i G(1,2) & = & \mp  Tr \left[  e^{\beta \Omega} e^{ - \beta K }  e^{i K t_2} \psi^\dagger(x_2) e^{-i K t_2} e^{ i K t_1} \psi (x_1) e^{- i K t_1}  \right] \\
+{} & = & \mp Tr \left[  e^{\beta \Omega} e^{ - \beta K }  e^{- i K ( t_1 - t_2 )} \psi^\dagger(x_2) e^{ i K (t_1 -t_2)} \psi (x_1)   \right]
+\end{eqnarray*}
+
+由$e^{i H t}$ 和$e^{- \beta H}$的相似性，构造$ it \to \tau $的变换。
+
+定义松原函数$\mathcal{ G } (1,2)$, 当$\tau_1 > \tau_2$时：
+
+\begin{equation*}
+\mathcal{ G } (1,2) = - Tr \left[ e^{\beta \Omega} e^{-\beta K}  e^{K(\tau_1 - \tau_2)} \psi(1) e^{- K(\tau_1 - \tau_2)} \psi^\dagger (2)   \right] 
+\end{equation*}
+
+$\tau_1 < \tau_2$时，
+
+
+\begin{equation*}
+\mathcal{ G } (1,2) = \pm Tr \left[ e^{\beta \Omega} e^{-\beta K}  e^{- K(\tau_1 - \tau_2)} \psi^\dagger (2) e^{ K(\tau_1 - \tau_2)} \psi(1)   \right] 
+\end{equation*}
+
+\subsection{松原函数的一个性质}
+
+利用松原函数的定义，我们可以证明：
+
+\begin{equation}
+\mathcal{G} (\tau < 0) =  \mp \mathcal{ G } (\tau + \beta > 0)
+\end{equation}
+
+对费米子取“-”，对波色子取“+”。$\tau \in [-\beta , \beta ]$，定义傅里叶变换：
+
+\begin{eqnarray*}
+\mathcal{G} (\tau) &=& \frac{1}{\beta} \sum\limits_n e^{-i \omega_n \tau} \mathcal{G} (i \omega_n) \\
+\mathcal{G} (i \omega_n) & = & \frac{1}{2} \int_{- \beta}^{\beta} d \tau e^{i \omega_n \tau} \mathcal{G} (\tau) 
+\end{eqnarray*}
+
+这里要求$2 \beta \omega_n = 2 n \pi $，即：$\omega_n = \frac{n \pi}{\beta}$
+
+利用$\mathcal{G} (\tau < 0)  = \mp \mathcal{G}(\tau + \beta >0) $，计算$\mathcal{G} (i \omega_n)$，
+
+\begin{eqnarray*}
+\mathcal{G} (i \omega_n) & = & \int_{-\beta}^0 d \tau e^{i \omega_n \tau } \mathcal{G} ( \tau ) + \frac{1}{2} \int_0^\beta d \tau e^{i \omega_n \tau } \mathcal{G} ( \tau ) \\
+{} & = & \frac{1}{2} (1 \mp e^{-i \omega_n \beta} ) \int_0^\beta d \tau e^{i \omega_n \tau} \mathcal{G}(\tau)
+\end{eqnarray*}
+
+讨论因子$\frac{1}{2} (1 \mp e^{-i \omega_n \beta} )$，对费米子，当$n$取奇数时，为1。对玻色子，当$n$取偶数时，为1。其他情况都是0。
+
+\subsection{无相互作用系统的松原函数}
+
+考虑无相互作用的费米子系统，哈密顿量可写为：
+
+\begin{equation}
+K_0 = H_0 - \mu N = \sum\limits_{k} ( \epsilon_k - \mu ) a_k^\dagger a_k
+\end{equation}
+
+定义傅里叶变换：
+
+\begin{eqnarray*}
+\psi(x)  &=& V^{-1/2} \sum\limits_k e^{i k x} a_k  \\
+\psi^\dagger (x)  &=& V^{-1/2} \sum\limits_k e^{- i k x} a^\dagger_k 
+\end{eqnarray*}
+
+对费米子，每个态$k$（这里先不考虑自旋指标，或把自旋归于指标$k$），或者占据0个费米子，或者占据1个费米子。对$\left| 0 \right\rangle$和$\left| 1 \right\rangle$我们都可证明：
+
+\begin{eqnarray*}
+e^{K_0 \tau} a_k e^{- K_0 \tau} &=& a_k e^{ -(\epsilon_k - \mu)\tau } \\
+e^{K_0 \tau} a^\dagger_k e^{- K_0 \tau} &=& a^\dagger_k e^{ (\epsilon_k - \mu) \tau}
+\end{eqnarray*}
+
+海森堡绘景下的$\psi$, 和$\psi^\dagger$
+
+\begin{eqnarray*}
+\psi(x,\tau) &=& e^{K_0 \tau} \psi(x) e^{-K_0 \tau} = V^{-1/2} \sum\limits_k e^{ikx} e^{ -(\epsilon_k - \mu)\tau } a_k\\
+\psi^\dagger (x,\tau) &=& e^{K_0 \tau} \psi^\dagger (x) e^{-K_0 \tau} = V^{-1/2} \sum\limits_k e^{- ikx} e^{ (\epsilon_k - \mu)\tau } a^\dagger_k
+\end{eqnarray*}
+
+现在来计算无相互作用时松原函数$\mathcal{G}^0$，
+
+\begin{equation}
+\mathcal{G}^0(1,2)=- e^{\beta \Omega_0} Tr \left( e^{-\beta K_0} T [ \psi(1) \psi^\dagger (2) ] \right)
+\end{equation}
+
+假设$\tau_1 > \tau_2$
+
+\begin{equation*}
+\mathcal{G}^0(1,2) = - V^{-1} \sum\limits_{k k'} ... \left\langle a_k a^\dagger_{k'}  \right\rangle
+\end{equation*}
+
+这里：
+
+\begin{equation}
+\left\langle a_k a^\dagger_{k'}  \right\rangle = \delta_{kk'} (1 \mp n_k^0)
+\end{equation}
+
+于是对$k$的求和变成是一重的了。
+
+\begin{equation}
+\mathcal{G}^0 (1,2) = - V^{-1} \sum\limits_k e^{i k (x_1 - x_2) - (\epsilon_k - \mu) (\tau_1 - \tau_2) }  (1 \mp n_k^0)
+\end{equation}
+
+这里：
+
+\begin{equation*}
+V^{-1} \sum\limits_k \to \frac{1}{(2 \pi)^3} \int d^3 k
+\end{equation*}
+
+定义傅里叶变换：
+
+\begin{equation}
+\mathcal{G}^0 (x, \tau) = \mathcal{G}^0 (1,2) = \frac{1}{(2\pi)^3} \int d^3 k  e^{i k x} \frac{1}{\beta} \sum\limits_n e^{-i \omega_n \tau} \mathcal{G}^0 (k, i\omega_n)
+\end{equation}
+
+逆傅里叶变换：
+
+\begin{equation}
+\mathcal{G}^0 (k, i\omega_n) = \int_0^\beta d \tau e^{i \omega_n \tau} \int d^3 x e^{-i k x} \mathcal{G}^0 (x, \tau) 
+\end{equation}
+
+把$\mathcal{G}^0(x, \tau)$的表达代入上式：
+
+\begin{equation*}
+\mathcal{G}^0 (k, i\omega_n)  = \int_0^\beta d \tau e^{i \omega_n \tau} \int d^3 x e^{-i k x} \left( -\frac{1}{(2 \pi)^3 } \right)  \int d^3 k' e^{i k' x } e^{- (\epsilon_{k'} - \mu) \tau} (1 \mp n_{k'}^0)
+\end{equation*}
+
+在上式积分中先计算$\int d^3 x e^{-i(k-k')x} = \delta(k-k')$，然后再计算$\frac{1}{(2 \pi)^3}  \int d^3 k' \delta( k - k')... = ...$。最后只剩下对$d \tau$的积分：
+
+\begin{equation*}
+\mathcal{G}^0 (k, i \omega_n) = - \int_0^\beta d \tau e^{i \omega_n \tau} e^{-(\epsilon_k - \mu)\tau }(1 \mp n_k^0)
+\end{equation*}
+
+对费米子，$\omega_n = \frac{(2n +1 )\pi}{\beta}$，$n_k^0 = \frac{1}{e^{\beta (\epsilon - \mu)} + 1}$，
+
+\begin{equation}
+\mathcal{G}^0 (k, i \omega_n) = \frac{1}{i \omega_n - \epsilon_k + \mu}
+\end{equation}
+
+
+\subsection*{练习}
+
+自由声子场的哈密顿量是：
+
+\begin{equation}
+H_0 = \sum\limits_k \omega_0 (k) \left( b^\dagger_k b_k + \frac{1}{2} \right)
+\end{equation}
+
+
+证明自由声子的松原函数$\mathcal{D}^0(k, \omega_n)$可表示为：
+
+\begin{equation}
+\mathcal{D}^0 (k, \omega_n) = \frac{1}{i \omega_n - \omega_0(k)} - \frac{1}{i \omega_n + \omega_0(k)} = - \frac{2 \omega_0 (k)}{  \omega_n^2 + \omega_0^2(k)  }
+\end{equation}
+
+这里$\omega_n = \frac{2 n \pi}{\beta}$。
